@@ -1,7 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
+
     return (
         <>
             <div className="bg-base-100">
@@ -15,8 +25,12 @@ const NavBar = () => {
                             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 <Link to="/">Home</Link>
                                 <Link to="/allToys"> All Toys</Link>
-                                <Link to="/myToys"> My Toys</Link>
-                                <Link to="/addToy"> Add A Toy</Link>
+                                {
+                                    user && <>
+                                        <Link to="/myToys"> My Toys</Link>
+                                        <Link to="/addToy"> Add A Toy</Link>
+                                    </>
+                                }
                                 <Link to="/blog"> Blogs</Link>
                             </ul>
                         </div>
@@ -28,17 +42,34 @@ const NavBar = () => {
                         <ul className="menu text-lg menu-horizontal gap-6 px-1">
                             <Link to="/">Home</Link>
                             <Link to="/allToys"> All Toys</Link>
-                            <Link to="/myToys"> My Toys</Link>
-                            <Link to="/addToy"> Add A Toy</Link>
+                            {
+                                user && <>
+                                    <Link to="/myToys"> My Toys</Link>
+                                    <Link to="/addToy"> Add A Toy</Link>
+                                </>
+                            }
                             <Link to="/blog"> Blogs</Link>
                         </ul>
                     </div>
 
                     <div className="navbar-end">
 
-                        <Link to="/login">
-                            <button className="btn text-xl text-white capitalize bg-fuchsia-500 border-0 hover:bg-fuchsia-400">Login</button>
-                        </Link>
+                        {
+                            user ?
+                                <>
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom capitalize" data-tip={`${user.displayName === null ? "Name not available" : user.displayName}`}>
+                                        <div className="w-10 rounded-full">
+                                            <img src={user.photoURL} alt="profile" />
+                                        </div>
+                                    </label>
+
+                                    <button onClick={handleLogOut} className="btn text-xl capitalize bg-fuchsia-500 text-white hover:bg-fuchsia-600">Log Out</button>
+                                </>
+                                :
+                                <Link to="/login">
+                                    <button className="btn text-xl capitalize bg-fuchsia-500 text-white hover:bg-fuchsia-600">Login</button>
+                                </Link>
+                        }
                     </div>
                 </div>
             </div>

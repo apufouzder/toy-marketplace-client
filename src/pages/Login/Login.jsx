@@ -1,17 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 
 
 const Login = () => {
     const [error, setError] = useState('');
     const { signIn, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(() => {
+                navigate(from, { replace: true })
             }).catch((error) => {
                 setError(error.message);
             });
@@ -28,6 +32,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message);

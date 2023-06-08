@@ -1,15 +1,19 @@
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Registration = () => {
     const [error, setError] = useState('');
-    const { createUser, updateUserNameAndPhoto, googleSignIn  } = useContext(AuthContext);
+    const { createUser, updateUserNameAndPhoto, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(() => {
+                navigate(from, { replace: true })
             }).catch((error) => {
                 setError(error.message);
             });
@@ -43,7 +47,9 @@ const Registration = () => {
             .catch(error => {
                 setError(error.message);
             })
+        navigate(from, { replace: true })
     }
+
     return (
         <div className="my-10">
             <div className="card mx-auto flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
@@ -90,11 +96,11 @@ const Registration = () => {
 
                     <div className="divider">OR</div>
 
-                    
-                        <button onClick={handleGoogleSignIn} className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
-                            <FcGoogle className='mr-1 text-2xl' />
-                            With Google</button>
-                    
+
+                    <button onClick={handleGoogleSignIn} className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
+                        <FcGoogle className='mr-1 text-2xl' />
+                        With Google</button>
+
 
                     <div className='text-center'>
                         <span>Do you have an account? <Link className='btn-link capitalize' to="/login">Login</Link> </span>
