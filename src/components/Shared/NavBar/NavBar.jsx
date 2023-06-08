@@ -36,7 +36,7 @@ const NavBar = () => {
 
                     <div className="navbar-end">
 
-                        <Link to="/">
+                        <Link to="/login">
                             <button className="btn text-xl text-white capitalize bg-fuchsia-500 border-0 hover:bg-fuchsia-400">Login</button>
                         </Link>
                     </div>
