@@ -5,8 +5,15 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Registration = () => {
     const [error, setError] = useState('');
-    const { createUser, updateUserNameAndPhoto, } = useContext(AuthContext);
+    const { createUser, updateUserNameAndPhoto, googleSignIn  } = useContext(AuthContext);
 
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {
+            }).catch((error) => {
+                setError(error.message);
+            });
+    }
 
 
     const handleRegistration = event => {
@@ -84,7 +91,7 @@ const Registration = () => {
                     <div className="divider">OR</div>
 
                     
-                        <button className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
+                        <button onClick={handleGoogleSignIn} className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
                             <FcGoogle className='mr-1 text-2xl' />
                             With Google</button>
                     
