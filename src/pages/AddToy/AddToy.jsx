@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 
 
 const AddToy = () => {
+    const {user} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -63,14 +66,14 @@ const AddToy = () => {
                             <label className="label">
                                 <span className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" name="seller_name" placeholder="name" className="input input-bordered" required />
+                            <input type="text" defaultValue={user?.displayName} name="seller_name" placeholder="name" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Seller Email</span>
                             </label>
-                            <input type="email" name="seller_email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" defaultValue={user?.email} name="seller_email" placeholder="email" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
