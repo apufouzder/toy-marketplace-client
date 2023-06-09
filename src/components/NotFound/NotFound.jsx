@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const NotFound = () => {
+    document.title = "Paw Toys | 404 NotFound";
     return (
         <div className="container mx-auto mt-10">
             <div className="text-center">

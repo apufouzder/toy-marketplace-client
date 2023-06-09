@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Registration = () => {
+    document.title = "Paw Toys | Registration";
     const [error, setError] = useState('');
     const { createUser, updateUserNameAndPhoto, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();

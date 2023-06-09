@@ -4,6 +4,7 @@ import swal from "sweetalert";
 
 
 const UpdateToyForm = () => {
+    document.title = "Paw Toys | Update toy";
     const loadToy = useLoaderData();
     const navigate = useNavigate();
 

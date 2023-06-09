@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 
 const Login = () => {
+    document.title = "Paw Toys | Login";
     const [error, setError] = useState('');
     const { signIn, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();

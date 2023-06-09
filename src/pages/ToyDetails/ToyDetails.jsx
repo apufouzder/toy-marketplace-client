@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 
 const ToyDetails = () => {
+    document.title = "Paw Toys | Toy Details";
     const toy = useLoaderData();
 
     return (

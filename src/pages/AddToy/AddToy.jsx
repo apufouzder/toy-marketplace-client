@@ -5,6 +5,7 @@ import swal from "sweetalert";
 
 
 const AddToy = () => {
+    document.title = "Paw Toys | Add a toy";
     const {user} = useContext(AuthContext);
 
     const handleSubmit = (e) => {

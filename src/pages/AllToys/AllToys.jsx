@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 
 const AllToys = () => {
+    document.title = "Paw Toys | All toy";
     const allToys = useLoaderData();
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
