@@ -12,6 +12,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute"
 import MyToys from "../../pages/MyToys/MyToys";
 import Blog from "../../pages/Blog/Blog";
 import UpdateToyForm from "../../pages/MyToys/UpdateToyForm";
+import NotFound from "../../components/NotFound/NotFound"
 
 const router = createBrowserRouter([
     {
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
                 path: "/blog",
                 element: <Blog />
             }
-        ]
+        ],
     },
+    {
+        path: "*",
+        element: <NotFound />
+    }
 ]);
 
 export default router;

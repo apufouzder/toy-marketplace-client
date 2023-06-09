@@ -73,13 +73,13 @@ const MyToys = () => {
                             <th>
                                 <button
                                     onClick={() => handleDelete(toy._id)}
-                                    className="btn btn-ghost btn-xs"
+                                    className="btn badge-error mr-1 btn-xs"
                                 >
                                     Delete
                                 </button>
                                 <button
                                     // onClick={() => handleUpdate(toy)}
-                                    className="btn btn-ghost btn-xs"
+                                    className="btn badge-success btn-xs"
                                 >
                                     <Link to={`/toyUpdate/${toy._id}`}> Update</Link>
                                 </button>
