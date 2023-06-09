@@ -1,7 +1,15 @@
+import 'aos/dist/aos.css';
+import Aos from "aos";
+import { useEffect } from 'react';
 
 const Features = () => {
+    useEffect(() => {
+        Aos.init({
+            duration: '2000'
+        });
+    }, [])
     return (
-        <div className="my-28">
+        <div data-aos="zoom-in-up" className="my-28">
             <div className="hero" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1556012018-50c5c0da73bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80")` }}>
                 <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content  py-20 text-center text-neutral-content">
