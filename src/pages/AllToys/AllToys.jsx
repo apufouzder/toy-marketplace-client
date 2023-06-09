@@ -6,6 +6,7 @@ const AllToys = () => {
     const allToys = useLoaderData();
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [limit, setLimit] = useState(20);
 
 
     const handleSearch = () => {
@@ -37,7 +38,7 @@ const AllToys = () => {
                 </thead>
                 <tbody>
                     {
-                        (searchQuery ? searchResults : allToys).map(toy => (
+                        (searchQuery ? searchResults : allToys.slice(0, limit)).map(toy => (
                             <tr key={toy._id} className="text-lg">
                                 <td>{toy.seller_name}</td>
                                 <td>{toy.name}</td>
@@ -55,6 +56,14 @@ const AllToys = () => {
 
                 </tbody>
             </table>
+            {searchQuery ? null : (
+                <button
+                    className="btn mt-4"
+                    onClick={() => setLimit(prevLimit => prevLimit + 20)}
+                >
+                    Load More
+                </button>
+            )}
         </div>
     );
 };
