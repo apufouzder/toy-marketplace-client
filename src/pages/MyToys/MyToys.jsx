@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
 const MyToys = () => {
     const [myToys, setMyToys] = useState([]);
@@ -30,6 +31,7 @@ const MyToys = () => {
     const handleSortChange = event => {
         setSortOrder(event.target.value);
     };
+
 
     return (
         <div className="overflow-x-auto container mx-auto">
@@ -75,7 +77,12 @@ const MyToys = () => {
                                 >
                                     Delete
                                 </button>
-                                <button className="btn btn-ghost btn-xs">Update</button>
+                                <button
+                                    // onClick={() => handleUpdate(toy)}
+                                    className="btn btn-ghost btn-xs"
+                                >
+                                    <Link to={`/toyUpdate/${toy._id}`}> Update</Link>
+                                </button>
                             </th>
                         </tr>
                     ))}

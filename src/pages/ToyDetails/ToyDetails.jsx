@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const ToyDetails = () => {
     const toy = useLoaderData();
-    console.log(toy);
+
     return (
         <div className="card max-w-3xl mx-auto mt-16 bg-base-100 shadow-md">
             <figure><img className="h-72" src={toy.photo} alt="Toy" /></figure>
