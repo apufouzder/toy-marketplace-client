@@ -34,7 +34,7 @@ const AddToy = () => {
             photo
         }
 
-        fetch('http://localhost:4000/addToy', {
+        fetch('https://paws-toys-server-apufouzder.vercel.app/addToy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

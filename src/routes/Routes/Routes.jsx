@@ -38,17 +38,17 @@ const router = createBrowserRouter([
             {
                 path: "/allToys",
                 element: <AllToys />,
-                loader: () => fetch('http://localhost:4000/addToy')
+                loader: () => fetch('https://paws-toys-server-apufouzder.vercel.app/addToy')
             },
             {
                 path: "/toy/:id",
                 element: <PrivateRoute><ToyDetails /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:4000/toy/${params.id}`)
+                loader: ({params}) => fetch(`https://paws-toys-server-apufouzder.vercel.app/toy/${params.id}`)
             },
             {
                 path: "/toyUpdate/:id",
                 element: <PrivateRoute><UpdateToyForm /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:4000/toy/${params.id}`)
+                loader: ({params}) => fetch(`https://paws-toys-server-apufouzder.vercel.app/toy/${params.id}`)
             },
             {
                 path: "/myToys",

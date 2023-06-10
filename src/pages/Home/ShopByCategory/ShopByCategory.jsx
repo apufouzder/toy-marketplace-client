@@ -10,7 +10,7 @@ const ShopByCategory = () => {
     const [allToys, setAllToys] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/addToy')
+        fetch('https://paws-toys-server-apufouzder.vercel.app/addToy')
             .then(res => res.json())
             .then(data => setAllToys(data))
     }, [])

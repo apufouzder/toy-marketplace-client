@@ -18,8 +18,8 @@ const UpdateToyForm = () => {
         const updateData = { price, quantity, description }
 
 
-        fetch(`http://localhost:4000/toy/${loadToy._id}`, {
-            method: 'PUT',
+        fetch(`https://paws-toys-server-apufouzder.vercel.app/toy/${loadToy._id}`, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },

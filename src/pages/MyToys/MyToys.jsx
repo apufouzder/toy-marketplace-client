@@ -10,13 +10,13 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/addToy?email=${user?.email}&sort=${sortOrder}`)
+        fetch(`https://paws-toys-server-apufouzder.vercel.app/addToy?email=${user?.email}&sort=${sortOrder}`)
             .then(res => res.json())
             .then(data => setMyToys(data));
     }, [sortOrder]);
 
     const handleDelete = id => {
-        fetch(`http://localhost:4000/toy/${id}`, {
+        fetch(`https://paws-toys-server-apufouzder.vercel.app/toy/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
